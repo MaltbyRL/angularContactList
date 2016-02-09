@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Intro to angulay</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+</head>
+<body ng-app="app">
+  <div class="container" ng-controller="mainCtrl">
+    <h1>Angular</h1>
+    <div class="row">
+    <div class="col-md-3">
+        <input ng-model="newContact.name" type="text" placeholder="Name">
+      </div>
+      <div class="col-md-3">
+        <input ng-model="newContact.email" type="text" placeholder="Email">
+      </div>
+      <div class="col-md-3">
+        <input ng-model="newContact.number" type="number" min="0" placeholder="Number">
+      </div>
+      <div class="col-md-3">
+        <button ng-click="addContact()" class="btn btn-danger">Add name</button>
+        <button ng-click="sort()" class="btn btn-warning">Sort</button>
+      </div>
+    </div>
+  <hr>
+  <!-- <button ng-click="$storage.counter = $storage.counter + 1">{{$storage.counter}}</button> -->
+
+  <!-- <div class="form-group">
+    <label for="filter">Search</label>
+    <input ng-modal="filtertext" type="text" class="form_control">
+  </div> -->
+  <div class="row">
+    <div class="col-xs-4"> </div>
+
+    <div class="col-xs-8">
+      <table class="table" ng-if('contacts.length')>
+        <thead>
+          <tr>
+            <th ng-repeat="(key, value) in (contacts[0])">{{key}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="(key, contact) in (contacts) track by $index" style="font-size: 1.7vw; color: darkorange;">
+            <td>{{contact.name}}</td>
+            <td>{{contact.email}}</td>
+            <td>{{contact.number}}</td>
+            <td>
+              <button class="btn btn-danger" ng-click='delName(contact)'>Delete</button>
+              <button class="btn btn-primary" ng-click='update(contact)'>Update</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+
+  <script src='https://code.jquery.com/jquery-2.2.0.min.js'></script>
+  <script src='bower_components/angular/angular.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
