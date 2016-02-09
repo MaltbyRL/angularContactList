@@ -27,6 +27,7 @@ app.controller("mainCtrl", function($scope, $localStorage, $filter) {
     $scope.contacts.push($scope.newContact);
     // $scope.$storage.contacts = $scope.contacts;
     console.log("done:", $scope.$storage.contacts);
+    location.reload(true)
   }
 
 

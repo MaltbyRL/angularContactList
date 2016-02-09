@@ -9,27 +9,33 @@
   <div class="container" ng-controller="mainCtrl">
     <h1>Angular</h1>
     <div class="row">
-    <div class="col-md-3">
+      <div class="col-md-4">
         <input ng-model="newContact.name" type="text" placeholder="Name">
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <input ng-model="newContact.email" type="text" placeholder="Email">
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <input ng-model="newContact.number" type="number" min="0" placeholder="Number">
       </div>
-      <div class="col-md-3">
-        <button ng-click="addContact()" class="btn btn-danger">Add name</button>
-        <button ng-click="sort()" class="btn btn-warning">Sort</button>
+      <div class="row">
+        <div class="col-md-3">
+          <button ng-click="addContact()" class="btn btn-danger">Add name</button>
+          <button ng-click="sort()" class="btn btn-warning">Sort</button>
+        </div>
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-5">
+          <div class="form-group">
+            <label for="filter">Search</label>
+            <input ng-modal="filtertext" type="text" class="form_control">
+          </div>
+      ``</div>
       </div>
     </div>
   <hr>
   <!-- <button ng-click="$storage.counter = $storage.counter + 1">{{$storage.counter}}</button> -->
 
-  <!-- <div class="form-group">
-    <label for="filter">Search</label>
-    <input ng-modal="filtertext" type="text" class="form_control">
-  </div> -->
   <div class="row">
     <div class="col-xs-4"> </div>
 
@@ -37,11 +43,13 @@
       <table class="table" ng-if('contacts.length')>
         <thead>
           <tr>
+            <th>Index</th>
             <th ng-repeat="(key, value) in (contacts[0])">{{key}}</th>
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="(key, contact) in (contacts) track by $index" style="font-size: 1.7vw; color: darkorange;">
+          <tr ng-repeat="(key, contact) in (contacts) |filter:filterText track by $index" style="font-size: 1.7vw; color: darkorange;">
+            <td>({{$index + 1}})</td>
             <td>{{contact.name}}</td>
             <td>{{contact.email}}</td>
             <td>{{contact.number}}</td>
